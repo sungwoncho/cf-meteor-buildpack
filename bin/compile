@@ -70,6 +70,10 @@ install_meteor() {
 build() {
   (
     cd $BUILD_DIR
+
+    status "Initializing the project"
+    git submodule update --recursive
+
     status "Building meteor bundle"
     meteor  --release 1.1.0.2 build --directory deploy --server http://localhost:3000
     cd deploy/bundle/programs/server
